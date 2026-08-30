@@ -1,0 +1,6 @@
+src/
+tests/
+spec/
+vitest.config.ts
+tsconfig.json
+*.tsbuildinfo
