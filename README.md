@@ -34,6 +34,23 @@ Or let OpenCode launch the published MCP package on demand with `npx`:
 
 The server uses MCP stdio transport and is normally launched by an MCP-compatible host rather than run interactively. Restart OpenCode after changing its MCP configuration so it can discover the tools.
 
+## Install the Subagent Comms Skill
+
+This repository includes the reusable `subagent-comms` skill under `skills/subagent-comms/`. It teaches a main OpenCode agent how to coordinate pools of real subagents through shared messaging, direct handoffs, waiting, history, attachments, and sequential shared-file turns.
+
+To load the repository skill in a project, add its root `skills` directory to OpenCode configuration:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": {
+    "paths": ["./skills"]
+  }
+}
+```
+
+Alternatively, copy or link `skills/subagent-comms/` to `~/.agents/skills/subagent-comms/` for external-skill discovery. Restart OpenCode after installing or changing the skill. Before coordinating work, the skill requires the main agent to verify that the configured MCP server exposes the required tools; see `skills/subagent-comms/references/install.md` for MCP installation notes.
+
 ## Develop From Source
 
 For development from this repository, install dependencies and build the MCP server:
